@@ -1,5 +1,5 @@
 #define ll long long
-#define pll pair<long long,long long>
+#define pll pair<ll,ll>
 class Solution {
 public:
     int countPaths(int n, vector<vector<int>>& roads) {
