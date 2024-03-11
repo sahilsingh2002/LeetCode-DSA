@@ -1,27 +1,23 @@
 class Solution {
 public:
     string customSortString(string order, string s) {
-        unordered_map<char,int>freq;
-        for(char i : order){
-            for(char p : s){
-                if(i==p){
-                    freq[i]++;
-                }
-            }
-        }
-        string ans = "";
-        for(char i :order){
-            if(freq.find(i)!=freq.end()) {
-                for(int j = 0;j<freq[i];j++){
-                    ans+=i;
-                }
-            };
-        }
-        for(char i : s){
-            if(freq.find(i)==freq.end()){
-                ans+=i;
-            }
-        }
-        return ans;
+       vector<int>freq(26,0);
+       string ans="";
+       for(char i:s){
+           freq[i-'a']++;
+       }
+       for(char i : order){
+           while(freq[i-'a']){
+               ans+=i;
+               freq[i-'a']--;
+           }
+       }
+       for(int i=0;i<freq.size();i++){
+           while(freq[i]){
+               ans+=i+'a';
+               freq[i]--;
+           }
+       }
+       return ans;
     }
 };
