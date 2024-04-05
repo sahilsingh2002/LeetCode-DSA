@@ -1,16 +1,30 @@
 class Solution {
 public:
     string makeGood(string s) {
-        string ans="";
-        int idx=0;
-        for(int i=1;i<s.size();i++){
-            if(abs(s[i]-s[i-1])==32){
-               
-                s.erase(i-1,2);
-                i=0;
+        stack<char>stk;
+        for(int i=0;i<s.size();i++){
+            while(!stk.empty()){
+                char top = stk.top();
+                if(abs(s[i]-top)==32){
+                    stk.pop();
+                    i++;
+                }
+                else{
+                    break;
+                }
             }
+            if(i<s.size()){
+
+            stk.push(s[i]);
+            }
+            
         }
-       
-       return s;
+        string ans="";
+        while(!stk.empty()){
+            char c = stk.top();
+            ans=c+ans;
+            stk.pop();
+        }
+        return ans;
     }
 };
