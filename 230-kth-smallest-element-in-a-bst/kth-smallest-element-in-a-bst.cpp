@@ -11,22 +11,19 @@
  */
 class Solution {
 public:
+void inorder(TreeNode* root,vector<int>&ans)
+    {
+        if(root==NULL)
+        {
+            return;
+        }
+        inorder(root->left,ans);
+        ans.push_back(root->val);
+        inorder(root->right,ans);
+    }
     int kthSmallest(TreeNode* root, int k) {
-        priority_queue<int,vector<int>,greater<int>>pq;
-        queue<TreeNode*>q;
-        q.push(root);
-        while(!q.empty()){
-            TreeNode*top = q.front();
-            q.pop();
-            if(top->left) q.push(top->left);
-            if(top->right) q.push(top->right);
-            pq.push(top->val);
-        }
-        for(int i=1;i<k;i++){
-            pq.pop();
-
-        }
-        int x = pq.top();
-        return x;
+        vector<int>ans;
+        inorder(root,ans);
+        return ans[k-1];
     }
 };
