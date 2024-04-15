@@ -10,15 +10,15 @@
  * };
  */
 class Solution {
-    int solve(TreeNode*root,string A){
+    int solve(TreeNode*root,int A){
         if(!root) return 0;
-       
-        A+=to_string(root->val);
-        if(!root->left && !root->right) return stoi(A);
+        A*=10;
+        A+=(root->val);
+        if(!root->left && !root->right) return A;
         return solve(root->left,A) + solve(root->right,A);
     }
 public:
     int sumNumbers(TreeNode* root) {
-        return solve(root,"");
+        return solve(root,0);
     }
 };
