@@ -10,27 +10,25 @@
  * };
  */
 class Solution {
-    void inorder(TreeNode*root,string A,vector<string>&ans){
-        if(!root) return;
+    string inorder(TreeNode*root,string A){
+        if(!root) return "zzzzzzzz";
         if(!root->left && !root->right){
              char c = 'a'+root->val;
                A=c+A;
-           if(A.size()>0) ans.push_back(A);
-           return;
+           return A;
         }
         char c = 'a'+root->val;
         A=c+A;
-        inorder(root->left,A,ans);
-        inorder(root->right,A,ans);
+        return min(inorder(root->left,A),inorder(root->right,A));
     }
 public:
     string smallestFromLeaf(TreeNode* root) {
-        vector<string>ans;
-        inorder(root,"",ans);
-        string m = ans[0];
-        for(string i:ans){
-            m = min(i,m);
-        }
+       
+        string m = inorder(root,"");
+        // string m = ans[0];
+        // for(string i:ans){
+        //     m = min(i,m);
+        // }
         return m;
     }
 };
