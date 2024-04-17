@@ -27,7 +27,10 @@ public:
     string smallestFromLeaf(TreeNode* root) {
         vector<string>ans;
         inorder(root,"",ans);
-        sort(ans.begin(),ans.end());
-        return ans[0];
+        string m = ans[0];
+        for(string i:ans){
+            m = min(i,m);
+        }
+        return m;
     }
 };
