@@ -28,16 +28,14 @@ public:
             for(int k=0;k<4;k++){
                 int row = i+drow[k];
                 int col = j+dcol[k];
-                cout<<row<<" : "<<col<<endl;
-                if(row>=0 && row<grid.size() && col>=0 && col<grid[0].size() && grid[row][col]==1 && !vis[row][col]){
-                   q.push({row,col});
-                   vis[row][col]=1;
-                }
-                else if(row>=0 && row<grid.size() && col>=0 && col<grid[0].size() && vis[row][col]){
-                   continue;
-                }
-                else{
+                if(row<0 || row>=grid.size() || col<0 || col>=grid[0].size() || grid[row][col]==0){
+                
                     ans++;
+                }
+                else if(!vis[row][col]){
+                    q.push({row,col});
+                    vis[row][col]=1;
+                   
                 }
             }
             
