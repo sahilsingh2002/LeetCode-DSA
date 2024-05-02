@@ -19,15 +19,14 @@ public:
         
 
         // approach 2
-        unordered_map<int,int>idx;
+        unordered_set<int>idx(nums.begin(),nums.end());
         int maxm = INT_MIN;
         int id = 0;
         for(int i:nums){
             if(idx.find(0-i)!=idx.end()){
                 maxm = max(maxm,abs(i));
             }
-            idx[i]=id;
-            id++;
+           
         }
         return maxm==INT_MIN?-1:maxm;
     }
