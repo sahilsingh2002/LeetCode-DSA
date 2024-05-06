@@ -23,21 +23,15 @@ public:
             valid.push(temp);
             temp=temp->next;
         }
-        ListNode*main = new ListNode(0);
+        ListNode*main =nullptr;
         while(!valid.empty()){
             ListNode*x = valid.top();
             valid.pop();
             x->next = main;
             main = x;
         }
-        temp = main;
-        ListNode*prev = main;
-        while(temp->next!=NULL){
-            prev = temp;
-            temp = temp->next;
-        }
-        prev->next =NULL;
-        delete temp;
+        
+       
         return main;
         
         // return head;
