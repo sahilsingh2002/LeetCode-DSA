@@ -14,15 +14,15 @@ public:
             i++;
         }
         
-        int numWords = i - start;
-        int totalSpaces = B - len;
-        int avgSpaces = numWords > 1 ? totalSpaces / (numWords - 1) : totalSpaces;
-        int extraSpaces = numWords > 1 ? totalSpaces % (numWords - 1) : totalSpaces;
+        int numwords = i - start;
+        int totals = B - len;
+        int avgsp = numwords > 1 ? totals / (numwords - 1) : totals;
+        int remsp = numwords > 1 ? totals % (numwords - 1) : totals;
 
         string line = A[start];
         
        
-        if (numWords == 1 && i < n) {
+        if (numwords == 1 && i < n) {
             line += string(B - len, ' ');
         } else {
             for (int j = start + 1; j < i; j++) {
@@ -31,10 +31,10 @@ public:
             }
             else{
                
-            line += string(avgSpaces, ' ');
-            if (extraSpaces > 0) {
+            line += string(avgsp, ' ');
+            if (remsp > 0) {
                 line += " ";
-                extraSpaces--;
+                remsp--;
              
             }
             }
