@@ -1,16 +1,16 @@
 class Solution:
+    def flipr(self,grid: List[List[int]],i):
+        for j in range(len(grid[0])):
+            grid[i][j] = 0 if grid[i][j] == 1 else 1
+    def flipc(self,grid: List[List[int]],j):
+        for i in range(len(grid)):
+            grid[i][j] = 0 if grid[i][j] == 1 else 1
     def matrixScore(self, grid: List[List[int]]) -> int:
-        def flipr(self,grid: List[List[int]],i):
-            for j in range(len(grid[0])):
-                grid[i][j] = 0 if grid[i][j] == 1 else 1
-        def flipc(self,grid: List[List[int]],j):
-            for i in range(len(grid)):
-                grid[i][j] = 0 if grid[i][j] == 1 else 1
         m = len(grid)
         n = len(grid[0])
         for i in range(m):
             if grid[i][0]==0:
-                flipr(self,grid,i)
+                self.flipr(grid,i)
         
         for j in range(1,n):
             zeroes = 0
@@ -23,7 +23,7 @@ class Solution:
                     ones+=1
             
             if(zeroes>ones):
-                flipc(self,grid,j)
+                self.flipc(grid,j)
         ans = 0
         for i in range(m):
             for j in range(n-1,-1,-1):
