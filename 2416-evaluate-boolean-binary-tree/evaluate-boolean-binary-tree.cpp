@@ -10,27 +10,23 @@
  * };
  */
 class Solution {
-    bool postorder(TreeNode*root){
-        if(root==NULL) return 0;
-        
-        if(root->val==1){
-            return true;
-        }
-        else if(root->val==0){
+    bool evaluateNode(TreeNode* node) {
+        if (node == nullptr) 
             return false;
-        }
-        bool a = postorder(root->left);
-        bool b = postorder(root->right);
-        if(root->val==2){
-            return a | b;
-        }
-        if(root->val==3){
-            return a & b;
-        }
-        return false;
+        
+        if (node->val == 1) 
+            return true;
+        
+        if (node->val == 0) 
+            return false;
+        
+        bool leftResult = evaluateNode(node->left);
+        bool rightResult = evaluateNode(node->right);
+        
+        return node->val == 2 ? leftResult || rightResult : leftResult && rightResult;
     }
 public:
     bool evaluateTree(TreeNode* root) {
-        return postorder(root);
+        return evaluateNode(root);
     }
 };
