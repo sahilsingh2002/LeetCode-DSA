@@ -10,31 +10,38 @@
  * };
  */
 class Solution {
-    bool canDel(TreeNode*node,int target){
-        if(node && node->val==target && !node->left && !node->right) return true;
-        return false;
-    }
-    void postorder(TreeNode*root,int target){
-        if(root==nullptr) return;
-        postorder(root->left,target);
-        postorder(root->right,target);
-       if(canDel(root->left,target)){
-        delete(root->left);
-        root->left = nullptr;
-       }
-       if(canDel(root->right,target)){
-        delete(root->right);
-        root->right = nullptr;
-       }
+    // bool canDel(TreeNode*node,int target){
+    //     if(node && node->val==target && !node->left && !node->right) return true;
+    //     return false;
+    // }
+    // void postorder(TreeNode*root,int target){
+    //     if(root==nullptr) return;
+    //     postorder(root->left,target);
+    //     postorder(root->right,target);
+    //    if(canDel(root->left,target)){
+    //     delete(root->left);
+    //     root->left = nullptr;
+    //    }
+    //    if(canDel(root->right,target)){
+    //     delete(root->right);
+    //     root->right = nullptr;
+    //    }
 
-    }
+    // }
 public:
     TreeNode* removeLeafNodes(TreeNode* root, int target) {
-        postorder(root,target);
-        if(!root->left && !root->right && root->val==target){
-            return NULL;
-        }
-        return root;
+        // postorder(root,target);
+        // if(!root->left && !root->right && root->val==target){
+        //     return NULL;
+        // }
+        // return root;
+
+        // without delete
+        if(!root)return NULL;
+    root->left=removeLeafNodes(root->left,target);
+    root->right=removeLeafNodes(root->right,target);
+    if(root->val==target&&!root->left&&!root->right)return NULL;
+    return root;
 
     }
 };
