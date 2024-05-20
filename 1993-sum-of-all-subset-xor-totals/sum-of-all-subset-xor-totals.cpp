@@ -1,20 +1,6 @@
 class Solution {
 public:
-// void makesub(vector<vector<int>>&ans,vector<int>&subs,int idx,vector<int>& nums){
-//     ans.push_back(subs);
-//     for(int i=idx;i<nums.size();i++){
-//         subs.push_back(nums[i]);
-//         makesub(ans,subs,i+1,nums);
-//         subs.pop_back();
-//     }
-// }
-//     vector<vector<int>>allSub(vector<int>&nums){
-//         vector<vector<int>>ans;
-//         vector<int>subs;
-//         int idx = 0;
-//         makesub(ans,subs,idx,nums);
-//         return ans;
-//     }
+
 
 // better way - 
  vector<vector<int>>allSub(vector<int>&nums){
@@ -52,3 +38,18 @@ public:
         return sum;
     }
 };
+// void makesub(vector<vector<int>>&ans,vector<int>&subs,int idx,vector<int>& nums){
+//     ans.push_back(subs);
+//     for(int i=idx;i<nums.size();i++){
+//         subs.push_back(nums[i]);
+//         makesub(ans,subs,i+1,nums);
+//         subs.pop_back();
+//     }
+// }
+//     vector<vector<int>>allSub(vector<int>&nums){
+//         vector<vector<int>>ans;
+//         vector<int>subs;
+//         int idx = 0;
+//         makesub(ans,subs,idx,nums);
+//         return ans;
+//     }
