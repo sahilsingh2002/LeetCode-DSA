@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 class Solution {
     private int solve(int[] nums,int k,ArrayList<Integer> list,int i){
         if(i==nums.length) return 0;
