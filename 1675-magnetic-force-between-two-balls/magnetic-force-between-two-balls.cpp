@@ -16,7 +16,7 @@ public:
         int n = position.size();
        
            int l = 1;
-           int r = position[n-1];
+           int r =(position.back() - position[0]) / (m - 1);
             int ans = 1;
         while(l<=r){
             int mid = l+(r-l)/2;
