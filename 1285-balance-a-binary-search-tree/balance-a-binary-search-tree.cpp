@@ -10,20 +10,20 @@
  * };
  */
 class Solution {
-        vector<int>arr;
+        vector<TreeNode*>arr;
         void inorder(TreeNode* root){
-            if(!root) return;
+            if(!root) return ;
             inorder(root->left);
-            arr.push_back(root->val);
+            arr.push_back(root);
             inorder(root->right);
         }
-        TreeNode* makeTree(vector<int>&arr,int l,int r){
-            if(l>r || l>=arr.size() || r<0 || l<0 || r>=arr.size()) {
+        TreeNode* makeTree(vector<TreeNode*>&arr,int l,int r){
+            if(l>r) {
                 
                 return NULL;
             };
             int mid = (l+r)/2;
-            TreeNode*rooted = new TreeNode(arr[mid]);
+            TreeNode*rooted =arr[mid];
             rooted->left = makeTree(arr,l,mid-1);
             rooted->right = makeTree(arr,mid+1,r);
             return rooted;
@@ -32,8 +32,8 @@ public:
     TreeNode* balanceBST(TreeNode* root) {
         inorder(root);
         
-        TreeNode*newR = makeTree(arr,0,arr.size()-1);
-        return newR;
+        root = makeTree(arr,0,arr.size()-1);
+        return root;
 
     }
 };
